@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC Online Order</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body class="container-fluid">
+
+     <!-- <header class="div1">
+         <img src="images/KFCBack.jpg" alt="KFC" class="d-block">
+    </header> -->
+    <h2 class="text-center text-secondary m-2">Welcome To KFC</h2>
+    <div class="accordion w-75" id="kfcForm" style="margin:auto;">
+        <!-- Item1 -->
+        <div class="accordion-item m-3">
+            <h2 class="accordion-header d-grid">
+                <button class="btn btn-success" data-bs-target="#customer" data-bs-toggle="collapse">
+                    Customer Info
+                </button> 
+            </h2>
+            <div id="customer" class="collapse show accordion-collapse" data-bs-parent="#kfcForm">
+                <div class="accordion-body">
+                    <div>
+                        <label class="form-label">Customer Name</label>
+                        <input type="text" class="form-control" id="txtName">
+                    </div>
+                    <div>
+                        <label class="form-label">Mobile</label>
+                        <input type="text" class="form-control" id="txtMobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Item2-->
+        <div class="accordion-item m-3">
+            <h2 class="accordion-header d-grid">
+                <button class="btn btn-success" data-bs-target="#meal" data-bs-toggle="collapse">
+                    Choose Your Meal
+                </button>
+            </h2>
+            <div id="meal" class="collapse show accordion-collapse" data-bs-parent="#kfcForm">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="https://kfclesotho.com/wp-content/uploads/2021/11/Snack-Burger-Double-Take-1024x1024.jpg" alt="Burgers">
+                                </div>
+                                <div class="card-footer">
+                                   <input type="radio" id="optBurger" name="meal" value="Omg Burger"> OMG Double Burger
+                                   <h5>&#8377; 180/-</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col text-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="https://blog.licious.in/wp-content/uploads/2020/04/Recipe-Images_1080-x-1080pix-03.jpg" alt="Roller">
+                                </div>
+                                <div class="card-footer">
+                                    <input type="radio" id="optRoller" name="meal" value="Double ChickenRoll"> Double ChickenRoll
+                                    <h5>&#8377; 150/-</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item3 -->
+        <div class="accordion-item m-3">
+            <h2 class="accordion-header d-grid">
+                <button class="btn btn-success" data-bs-target="#adon" data-bs-toggle="collapse">
+                    Choose AD-ON's
+                </button>
+            </h2> 
+            <div id="adon" class="collapse show accordion-collapse" data-bs-parent="#kfcForm">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="https://th.bing.com/th/id/OIP.tErgRt4WwKn-cPEQH4xkTwHaGs?rs=1&pid=ImgDetMain">
+                                </div>
+                                <div class="card-footer">
+                                    <input type="checkbox" id="optBucket" value="Chicken Bucket"> Chicken Bucket
+                                    <h5>&#8377 300/-</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col text-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/xl/D-PR00002325.jpg?ver=33.14" alt="">
+                                </div>
+                                <div class="card-footer">
+                                    <input type="checkbox" id="optPepsi" value="ClassicChicken & Pepsi Combo"> ClassicChicken & Pepsi Combo
+                                    <h5>&#8377 130/-</h5> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-2">
+                <button onclick="orderClick()" class="btn btn-primary" data-bs-target="#summary" data-bs-toggle="modal">
+                    Place Order
+                </button>
+                <div class="modal fade" id="summary">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="text-center">Bill Summary</h3>
+                                <button class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th>Customer Name</th>
+                                            <td id="lblName"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Mobile</th>
+                                            <td id="lblMobile"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Selected Meal</th>
+                                            <td id="lblMeal"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Selected AD-ON's</th>
+                                            <td id="lblAdon"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bill Amount</th>
+                                            <td id="lblBill"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
